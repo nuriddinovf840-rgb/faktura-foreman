@@ -37,7 +37,7 @@ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();window.inst
 return '<div class="rows txrows">'+(list.map(function(t){
 var o=obj(t.objectId), label=t.counterparty||t.category||t.purpose||'Операция';
 return '<div class="row txrow"><div class="dot txmark '+(t.type==='income'?'txincome':'txexpense')+'">'+(t.type==='income'?'↓':'↑')+'</div><div class="rowmain"><div class="rowtitle" title="'+esc(t.purpose||label)+'">'+esc(label)+'</div><div class="sub txmeta"><span>'+dateFmt(t.date)+'</span><span>'+esc(t.category)+'</span>'+(o?'<a href="#" data-open="'+o.id+'" title="'+esc(o.name)+'">'+esc(o.name)+'</a>':'')+'</div></div><div class="amount '+(t.type==='income'?'in':'out')+'">'+(t.type==='income'?'+':'−')+' '+money(t.amount)+'</div><details class="txdetail"><summary aria-label="Подробности операции">i</summary><div class="txdetailbody">'+(t.purpose?'<div><b>Назначение:</b> '+esc(t.purpose)+'</div>':'')+'<div><b>Категория:</b> '+esc(t.category)+'</div>'+(t.person?'<div><b>Кто оплатил / получил:</b> '+esc(t.person)+'</div>':'')+(t.counterparty?'<div><b>Контрагент:</b> '+esc(t.counterparty)+'</div>':'')+'</div></details></div>'
-})).join('')||'<div class="empty">По этим фильтрам операций нет</div>')+'</div>'
+}).join('')||'<div class="empty">По этим фильтрам операций нет</div>')+'</div>'
 };
 renderFinance=function(){
 var l=data.transactions.slice().sort(function(a,b){return b.date.localeCompare(a.date)});
